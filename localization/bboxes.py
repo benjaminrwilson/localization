@@ -1,6 +1,11 @@
 import torch
 
-from loc_utils.coord_types import CoordType
+from enum import Enum
+
+
+class CoordType(Enum):
+    XYXY = 0
+    XYWH = 1
 
 
 class BBoxes(object):
@@ -12,8 +17,8 @@ class BBoxes(object):
         self.size = img_size
 
     def convert(self, coord_type):
-        if coord_type not in CoordType:
-            return
+        if not isinstance(coord_type, CoordType):
+            raise ValueError("Invalid coordinate type!")
         elif self.coord_type == coord_type:
             return self
         if coord_type == CoordType.XYXY:
