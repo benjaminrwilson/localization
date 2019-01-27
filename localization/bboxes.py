@@ -55,8 +55,8 @@ class BBoxes(object):
     def coord_type(self):
         return self._coord_type
 
-    @coords.setter
-    def coords(self, coord_type):
+    @coord_type.setter
+    def coord_type(self, coord_type):
         _validate(coord_type)
         self._coord_type = coord_type
 
